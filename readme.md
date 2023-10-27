@@ -5,8 +5,8 @@ For implementing the genetic algorithm, the PyGAD library is used.
 
 # Steps to replicate
 
--Clone the repository
--Install the dependencies using the following commands:
+- Clone the repository
+- Install the dependencies using the following commands:
 
 ```python
 pip install pygad
@@ -18,5 +18,5 @@ pip install imageio
 
 # Contents of the repository
 
-convertor.py and main.py are the main implementation of the PyGAD library. Details of the exact working is explained in the Report.pdf file. 
+The "convertor.py" and "main.py" files are the main implementation of the project using the PyGAD library. Details of the exact working is explained in the Report.pdf file. 
 Three folders of test runs 1,2,3 contain the fitness vs iteration graphs as well as the output image.

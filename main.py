@@ -4,11 +4,9 @@ import converter
 import pygad
 import matplotlib.pyplot
 
-# Reading target image to be reproduced using Genetic Algorithm (GA).
 targetimage = imageio.imread('Pepsi.jpg')
 targetimage = numpy.asarray(targetimage/255, dtype=numpy.float64)
 
-# Target image after enconding.
 targetchromosome = converter.imgtochromosome(targetimage)
 print(targetchromosome)
 
@@ -16,8 +14,6 @@ print(targetchromosome)
 def fitnessfunc(ga_instance, solution, solution_idx):
 
     fitness = numpy.sum(numpy.abs(targetchromosome-solution))
-
-    # Negating the fitness value to make it increasing rather than decreasing.
     fitness = numpy.sum(targetchromosome) - fitness
     return fitness
 
@@ -44,10 +40,8 @@ ga_instance = pygad.GA(num_generations=20000,
 
 ga_instance.run()
 
-# After the generations complete, some plots are showed that summarize the how the outputs/fitenss values evolve over generations.
 ga_instance.plot_fitness()
 
-# Returning the details of the best solution.
 solution, solution_fitness, solution_idx = ga_instance.best_solution()
 print("Fitness value of the best solution = {solution_fitness}".format(
     solution_fitness=solution_fitness))
