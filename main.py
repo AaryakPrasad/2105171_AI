@@ -5,20 +5,20 @@ import pygad
 import matplotlib.pyplot
 
 # Reading target image to be reproduced using Genetic Algorithm (GA).
-target_im = imageio.imread('Pepsi.jpg')
-target_im = numpy.asarray(target_im/255, dtype=numpy.float64)
+targetimage = imageio.imread('Pepsi.jpg')
+targetimage = numpy.asarray(targetimage/255, dtype=numpy.float64)
 
-# Target image after enconding. Value encoding is used.
-target_chromosome = converter.img2chromosome(target_im)
-print(target_chromosome)
+# Target image after enconding.
+targetchromosome = converter.imgtochromosome(targetimage)
+print(targetchromosome)
 
 
-def fitness_fun(ga_instance, solution, solution_idx):
+def fitnessfunc(ga_instance, solution, solution_idx):
 
-    fitness = numpy.sum(numpy.abs(target_chromosome-solution))
+    fitness = numpy.sum(numpy.abs(targetchromosome-solution))
 
     # Negating the fitness value to make it increasing rather than decreasing.
-    fitness = numpy.sum(target_chromosome) - fitness
+    fitness = numpy.sum(targetchromosome) - fitness
     return fitness
 
 
@@ -29,9 +29,9 @@ def on_gen(ga_instance):
 
 ga_instance = pygad.GA(num_generations=20000,
                        num_parents_mating=10,
-                       fitness_func=fitness_fun,
+                       fitness_func=fitnessfunc,
                        sol_per_pop=20,
-                       num_genes=target_im.size,
+                       num_genes=targetimage.size,
                        init_range_low=0,
                        init_range_high=1,
                        mutation_probability=0.01,
@@ -58,7 +58,7 @@ if ga_instance.best_solution_generation != -1:
     print("Best fitness value reached after {best_solution_generation} generations.".format(
         best_solution_generation=ga_instance.best_solution_generation))
 
-result = converter.chromosome2img(solution, target_im.shape)
+result = converter.chromosometoimg(solution, targetimage.shape)
 matplotlib.pyplot.imshow(result)
 matplotlib.pyplot.title("Using PyGAD for Reproducing Images")
 matplotlib.pyplot.show()
