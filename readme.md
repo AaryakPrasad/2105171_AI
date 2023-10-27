@@ -8,13 +8,14 @@ For implementing the genetic algorithm, the PyGAD library is used.
 - Clone the repository
 - Install the dependencies using the following commands:
 
-```python
-pip install pygad
-pip install numpy
-pip install matplotlib
-pip install imageio
-```
--Run the main.py file. A reproduction algorithm of 20000 iterations will begin to execute
+    ```python
+    pip install pygad
+    pip install numpy
+    pip install matplotlib
+    pip install imageio
+    ```
+    
+- Run the main.py file. A reproduction algorithm of 20000 iterations will begin to execute
 
 # Contents of the repository
 
